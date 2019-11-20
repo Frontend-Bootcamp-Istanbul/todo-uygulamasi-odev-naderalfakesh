@@ -86,6 +86,8 @@ class App extends Component {
   }
 
   render(){
+      const tamalanmis = this.state.todos.filter((el) =>   el.checked === true);
+      const tamalanmamis = this.state.todos.filter((el) =>   el.checked === false);
     return (
         <div className="App" id="todo">
             <div className="todo-list todo-list-add">
@@ -97,14 +99,14 @@ class App extends Component {
             </div>
 
             <TodoList
-                title="Tamamlanmamış Todolar"
-                todos={[]}
+                title={"Tamamlanmamış Todolar (" + (tamalanmamis.length || 0) + ")"}
+                todos={tamalanmamis}
                 onTodoRemove={this.removeTodo}
                 onCheckedToggle={this.toggleCompleteStatus} />
 
             <TodoList
-                title="Tamamlanmış Todolar"
-                todos={[]}
+                title={"Tamamlanmış Todolar (" + (tamalanmis.length || 0) +")"}
+                todos={ tamalanmis }
                 onTodoRemove={this.removeTodo}
                 onCheckedToggle={this.toggleCompleteStatus} />
         </div>
